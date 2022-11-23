@@ -15,7 +15,7 @@ def sierpinski(level, turtle, length):
 
 def main():
     length = 900
-    n = 9
+    n = 10
     screen = Screen()
     turtle = Turtle()
     screen.title("Sierpinski triangle n=" + str(n))
@@ -27,9 +27,15 @@ def main():
     turtle.goto(-int(length/2), -int(length/3)-85)
     turtle.pendown()
 
-    sierpinski(n, turtle, length)
+    if n > 10:
+        screen.tracer(0, 0)
+        screen.title("PLEASE WAIT")
+        sierpinski(n, turtle, length)
+        screen.update()
+        screen.title("Sierpinski triangle n=" + str(n))
+    if n <= 10:
+        sierpinski(n, turtle, length)
 
-    turtle.hideturtle()
     screen.exitonclick()
 
 
